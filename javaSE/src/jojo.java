@@ -1,4 +1,5 @@
-public class koko {
+public class jojo {
     public static void main(String[] args) {
+
     }
 }
