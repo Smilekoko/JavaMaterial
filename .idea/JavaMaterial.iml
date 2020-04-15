@@ -3,7 +3,6 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_14">
     <output url="file://$MODULE_DIR$/Output" />
     <output-test url="file://$MODULE_DIR$/TestOutput" />
-    <exclude-output />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
