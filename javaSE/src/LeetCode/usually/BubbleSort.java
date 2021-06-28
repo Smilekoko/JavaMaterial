@@ -7,7 +7,7 @@ public class BubbleSort {
     public static void main(String[] args) {
 //        bubbleSort1();
 //        bubbleSort2();
-bubbleSort3();
+        bubbleSort3();
     }
 
     /**
