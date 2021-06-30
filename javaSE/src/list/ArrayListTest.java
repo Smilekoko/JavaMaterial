@@ -17,7 +17,6 @@ public class ArrayListTest {
 //        insertData(arrayList, "ArrayList");
 //        readAccessData(arrayList, "ArrayList");
 //        deleteData(arrayList, "ArrayList");
-
 //        listChangeStringArray();
 
         arraysContainsEach();
@@ -25,6 +24,7 @@ public class ArrayListTest {
 
     /**
      * 指定的List 的子类中删除元素，并统计删除的时间
+     * 比如 ArrayList LinkedList
      *
      * @param list List 的子类
      * @param name 子类的名称
@@ -125,15 +125,14 @@ public class ArrayListTest {
         ArrayList<String> sampleRFIDList = new ArrayList<>(Arrays.asList(sampleRFID));
 
         //新增RFID：遍历结果集合，是否被包含中样本集合中，不包含就是新增的
-        //https://geek-docs.com/java/java-collection/how-to-compare-two-arraylist.html
         ArrayList<String> newRFIDList = new ArrayList<String>(); //包含新增RFID集合
         for (String temp : result1)
             if (!sampleRFIDList.contains(temp))
                 newRFIDList.add(temp);
         System.out.println("新增RFID=" + newRFIDList);
 
-        //丢失RFID,遍历样本集合，确定样本中的每一个RFID是否包含在结果集合中，不包含就是丢失的
-        ArrayList<String> lostRFIDList = new ArrayList<String>(); //包含新增RFID集合
+        //丢失RFID：遍历样本集合，确定样本中的每一个RFID是否包含在结果集合中，不包含就是丢失的
+        ArrayList<String> lostRFIDList = new ArrayList<String>(); //包含丢失RFID集合
         for (String temp : sampleRFIDList)
             if (!result1.contains(temp))
                 lostRFIDList.add(temp);
