@@ -14,51 +14,17 @@ public class ArrayListTest {
 
     public static void main(String[] args) {
 
-//        insertData(arrayList,"ArrayList");
-//        readAccessData(arrayList,"ArrayList");
-//        deleteData(arrayList,"ArrayList");
-        aggregateMultiList();
+//        insertData(arrayList, "ArrayList");
+//        readAccessData(arrayList, "ArrayList");
+//        deleteData(arrayList, "ArrayList");
 
+//        listChangeStringArray();
+
+        arraysContainsEach();
     }
 
     /**
-     * 多个集合取并集
-     * addAll :合并连个集合,不会取重，所以元素加入集合
-     * retainAll：获取两个集合交集
-     * 首先合并所以List集合
-     * list集合再去重
-     */
-    private static void aggregateMultiList() {
-        ArrayList<String> a = new ArrayList<String>();
-        a.add("1");
-        a.add("2");
-        a.add("3");
-        ArrayList<String> b = new ArrayList<String>();
-        b.add("2");
-        b.add("3");
-        b.add("4");
-        ArrayList<String> c = new ArrayList<String>();
-        c.add("3");
-        c.add("4");
-        c.add("5");
-        //addAll :合并两个集合,不会取重，所以元素加入集合
-//        a.addAll(b);
-//        System.out.println(a);
-
-        //获取两个集合交集
-//        b.retainAll(c);
-//        System.out.println(b);
-
-        ArrayList<ArrayList<String>> arrs = new ArrayList<ArrayList<String>>();
-        arrs.add(a);
-        arrs.add(b);
-        arrs.add(c);
-        ArrayList<String> s = KArrayListTest.INSTANCE.aggregateResults(arrs);
-        System.out.println(Arrays.toString(s.toArray()));
-    }
-
-    /**
-     * 指定的List 位置 删除元素，并统计删除的时间
+     * 指定的List 的子类中删除元素，并统计删除的时间
      *
      * @param list List 的子类
      * @param name 子类的名称
@@ -98,7 +64,7 @@ public class ArrayListTest {
     }
 
     /**
-     * 指定的List 的位置读取元素，并统计读取的时间
+     * 指定的List 的子类中读取元素，并统计读取的时间
      *
      * @param list List 的子类
      * @param name 子类的名称
@@ -116,11 +82,62 @@ public class ArrayListTest {
     }
 
     /**
-     * 字符串列表排序
+     * List和数组间转换
      */
-    public static void strArrayListSort() {
+    public static void listChangeStringArray() {
 
+        //先准备一个List
+        List<String> testList = new ArrayList<>();
+        testList.add("a");
+        testList.add("b");
+        testList.add("c");
+
+        //List转String
+        String[] strs1 = testList.toArray(new String[0]);
+        for (String s : strs1) {
+            System.out.println(s);
+        }
+
+
+        //准备一个String数组
+        String[] strs = {"aa", "bb", "cc"};
+        //String数组转List
+        List<String> strsToList1 = Arrays.asList(strs);
+        for (String s : strsToList1) {
+            System.out.println(s);
+
+        }
     }
 
+    /**
+     * 两个集合比较，是否包含对方的元素
+     */
+    public static void arraysContainsEach() {
+        //样本RFID是String[]
+        String[] sampleRFID = {"1", "2", "3", "4", "5", "6", "7"};
+        //返回结果是List<String>
+        ArrayList<String> result1 = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            result1.add(i + "");
+        }
+
+        //转换样本数组为集合方便比对
+        ArrayList<String> sampleRFIDList = new ArrayList<>(Arrays.asList(sampleRFID));
+
+        //新增RFID：遍历结果集合，是否被包含中样本集合中，不包含就是新增的
+        //https://geek-docs.com/java/java-collection/how-to-compare-two-arraylist.html
+        ArrayList<String> newRFIDList = new ArrayList<String>(); //包含新增RFID集合
+        for (String temp : result1)
+            if (!sampleRFIDList.contains(temp))
+                newRFIDList.add(temp);
+        System.out.println("新增RFID=" + newRFIDList);
+
+        //丢失RFID,遍历样本集合，确定样本中的每一个RFID是否包含在结果集合中，不包含就是丢失的
+        ArrayList<String> lostRFIDList = new ArrayList<String>(); //包含新增RFID集合
+        for (String temp : sampleRFIDList)
+            if (!result1.contains(temp))
+                lostRFIDList.add(temp);
+        System.out.println("丢失的RFID=" + lostRFIDList);
+    }
 
 }
