@@ -2,7 +2,7 @@ package list
 
 object KArrayListTest {
     /**
-     * 合并多次扫描结果取并集
+     * 多个集合合并
      */
     fun aggregateResults(resultLists: ArrayList<ArrayList<String>>): ArrayList<String> {
 
@@ -11,7 +11,7 @@ object KArrayListTest {
         //合并多个集合
         for (i in resultLists.indices) {
             if (i != resultLists.size - 1)
-                resultLists[i].addAll(resultLists[i + 1])
+                resultLists[0].addAll(resultLists[i + 1])
         }
         //合并完后的集合
         tempArr = resultLists[0]
